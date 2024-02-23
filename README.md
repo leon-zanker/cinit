@@ -34,7 +34,7 @@ The possible `Makefile` commands are:
 - `make clean`: This will delete everything inside `bin` and `build` as well as the whole `.cache` directory, should it exist.
 - `make commands`: This will create a `compile_commands.json` file using `bear` (this enables intellisense with clangd when using third party dependencies). `bear` has to be installed seperately for this to work.
 
-`cinit` will also initialize an MIT License (please don't forget to enter your name under [your name]) and a template for a README file.
+`cinit` will also initialize an MIT License and a template for a README file (please don't forget to enter your name instead of [your name]).
 
 It will also initialize a simple header file with `#pragma once` that has the same name as the project and a main.c file with a hello world program to test the development environment with `make` followed by `make run` after initializing the project.
 
@@ -57,3 +57,5 @@ $ sudo ln -s "$(pwd)/cinit" "location/in/your/path/cinit"
 ```
 
 A common place to put symbolic links to programs on Linux is "/usr/local/bin", though you may put it in any directory in your PATH or use another method of making it available globally.
+
+(C) 2024 Leon Zanker

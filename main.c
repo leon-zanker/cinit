@@ -76,6 +76,11 @@ int main(int argc, char** argv) {
     make_subdir(app_name, "include");
     make_subdir(app_name, "src");
 
+    char year[5];
+    time_t now = time(NULL);
+    struct tm *local_time = localtime(&now);
+    strftime(year, sizeof (year), "%Y", local_time);
+
     // create README.md
     {
         char file_path[PATH_BUFFER_SIZE];
@@ -90,8 +95,10 @@ int main(int argc, char** argv) {
         } else {
             const char* file_fmt = "# %s\n"
                                      "\n"
-                                     "\n";
-            fprintf(f, file_fmt, app_name);
+                                     "\n"
+                                     "\n"
+                                     "(C) [your name] %s";
+            fprintf(f, file_fmt, app_name, year);
             fclose(f);
             printf("Created file: %s\n", file_name);
         }
@@ -109,11 +116,6 @@ int main(int argc, char** argv) {
             fprintf(stderr, "ERROR: Failed to create file: %s\n", file_name);
             return EXIT_FAILURE;
         } else {
-            char year[5];
-            time_t now = time(NULL);
-            struct tm *local_time = localtime(&now);
-            strftime(year, sizeof (year), "%Y", local_time);
-
             const char* file_fmt = "MIT License\n"
                                    "\n"
                                    "Copyright (c) %s [your name]\n"
