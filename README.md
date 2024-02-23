@@ -54,4 +54,4 @@ $ make
 $ sudo ln -s "$(pwd)/cinit" "location/in/your/path/cinit"
 ```
 
-A common place to put symbolic links to programs on Linux is "/usr/local/bin", though you may put it in any directory in your PATH or use another method of making it globally available.
+A common place to put symbolic links to programs on Linux is "/usr/local/bin", though you may put it in any directory in your PATH or use another method of making it available globally.
