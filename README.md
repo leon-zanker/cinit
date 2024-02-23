@@ -43,6 +43,7 @@ NOTE: Before generating/regenerating the `compile_commands.json` file with `make
 To install and use `cinit` you will need the following:
 
 - `make`
+- `pkg-config`
 - A C compiler - the default is `clang`, but you can specify another one such as `gcc` with the `CC` variable in the `Makefile`
 - `bear` (only if you need to generate `compile_commands.json` files)
 
