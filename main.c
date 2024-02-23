@@ -97,7 +97,7 @@ int main(int argc, char** argv) {
                                      "\n"
                                      "\n"
                                      "\n"
-                                     "(C) [your name] %s";
+                                     "(C) [your name] %s\n";
             fprintf(f, file_fmt, app_name, year);
             fclose(f);
             printf("Created file: %s\n", file_name);

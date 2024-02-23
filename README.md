@@ -38,7 +38,7 @@ The possible `Makefile` commands are:
 
 It will also initialize a simple header file with `#pragma once` that has the same name as the project and a main.c file with a hello world program to test the development environment with `make` followed by `make run` after initializing the project.
 
-NOTE: Before generating/regenerating the `compile_commands.json` file with `make commands`, please run `make clean`, so `bear` can catch all dependencies correctly.
+NOTES: Before generating/regenerating the `compile_commands.json` file with `make commands`, please run `make clean`, so `bear` can catch all dependencies correctly. Also, `pkg-config` will output an error telling you to specify package names when the `PACKAGES` variable in the `Makefile` is empty. This does not impact the compilation of programs that don't use third party dependencies, so it is completely safe to leave the `PACKAGES` variable empty.
 
 ## Installation
 
