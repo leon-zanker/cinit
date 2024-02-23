@@ -2,6 +2,8 @@
 
 `cinit` is a simple initialization tool for small multi-file C projects. It is currently only tested on Linux, though it should support macOS as well.
 
+This application is meant to work well with `clang` and `clangd`, as it has functionality specifically for `clangd` and the default `Makefile` uses `clang` as the compiler, though you can easily switch out the `COMPILER` variable, with that being the only change necessary to use another compiler of your choice.
+
 ## Features
 
 `cinit` will initialize the following project structure ("project" will be the name for your project):
