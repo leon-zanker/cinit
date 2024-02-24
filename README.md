@@ -2,7 +2,7 @@
 
 `cinit` is a simple initialization tool for small multi-file C projects. It is currently only tested on Linux, though it should support macOS as well.
 
-This application is meant to work well with `clang` and `clangd`, as it has functionality specifically for `clangd` and the default `Makefile` uses `clang` as the compiler, though you can easily switch out the `COMPILER` variable, with that being the only change necessary to use another compiler of your choice.
+This application is meant to work well with `clang`, `clangd` and `lldb`, as it has functionality specifically for `clangd` and the default `Makefile` uses `clang` as the compiler and `lldb` as the debugger, though you can easily switch out the `COMPILER` variable, with that being the only change necessary to use another compiler of your choice and the `DEBUGGER` variable, with that being the only change necessary to use another debugger of your choice.
 
 ## Features
 
@@ -31,6 +31,7 @@ The possible `Makefile` commands are:
 
 - `make`: This builds the project using the variables specified in the `Makefile`.
 - `make run`: This runs ./bin/project where project is the name specified at initialization.
+- `make debug`: This runs the debugger specified in the `Makefile` on the executable. The default debugger is `lldb`.
 - `make clean`: This will delete everything inside `bin` and `build` as well as the whole `.cache` directory, should it exist.
 - `make commands`: This will create a `compile_commands.json` file using `bear` (this enables intellisense with clangd when using third party dependencies). `bear` has to be installed seperately for this to work.
 
@@ -47,6 +48,7 @@ To install and use `cinit` you will need the following:
 - `make`
 - `pkg-config`
 - A C compiler - the default is `clang`, but you can specify another one such as `gcc` with the `CC` variable in the `Makefile`
+- `lldb` or another debugger (only if you plan on using the `make debug` command)
 - `bear` (only if you need to generate `compile_commands.json` files)
 
 To install `cinit`, clone the repository to a location of your choice, `cd` into the directory and run the following commands to create a symbolic link to the executable. Switch out "location/in/your/path" for the directory you want to put the symbolic link in:

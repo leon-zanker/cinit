@@ -146,13 +146,15 @@ int main(int argc, char** argv) {
             const char* file_fmt = "# Flexible C Project Makefile (FCPM)\n"
                                    "EXE_NAME = %s\n"
                                    "COMPILER = clang\n"
-                                   "FLAGS = -Wall -Werror\n"
+                                   "DEBUGGER = lldb\n"
+                                   "FLAGS = -Wall -Werror -g\n"
                                    "PACKAGES = \n"
                                    "\n"
                                    "# Commands:\n"
                                    "\n"
                                    "# make          => builds the executable\n"
                                    "# make run      => runs the executable (must be built first)\n"
+                                   "# make debug    => runs the debbuger with the executable\n"
                                    "# make clean    => removes build artifacts\n"
                                    "# make commands => builds compile_commands.json for 'clang' and 'clangd'\n"
                                    "\n"
@@ -177,6 +179,9 @@ int main(int argc, char** argv) {
                                    "run:\n"
                                    "\t./bin/$(EXE_NAME)\n"
                                    "\n"
+                                   "debug:\n"
+                                   "\t$(DEBUGGER) ./bin/$(EXE_NAME)\n"
+                                   "\n"
                                    "clean:\n"
                                    "\trm -rf bin/*\n"
                                    "\trm -rf build/*\n"
@@ -187,7 +192,7 @@ int main(int argc, char** argv) {
                                    "\n"
                                    "# you may add your own install label here\n"
                                    "\n"
-                                   ".PHONY: all clean run commands # don't forget to make the install label phony if you define one\n";
+                                   ".PHONY: all clean run debug commands # don't forget to make the install label phony if you define one\n";
             fprintf(f, file_fmt, app_name);
             fclose(f);
             printf("Created file: %s\n", file_name);
