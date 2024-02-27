@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
         perror("You need to specify the project name.\n");
         return EXIT_FAILURE;
     } else if (argc > 2) {
-        fprintf(stderr, "Too many arguments: expected one (the project name), got %d\n", argc - 1);
+        fprintf(stderr, "Too many arguments: expected one (the project name), got %d.\n", argc - 1);
         return EXIT_FAILURE;
     }
 
@@ -40,11 +40,11 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
     if (strchr(app_name, '/')) {
-        perror("Project name cannot contain '/'\n");
+        perror("Project name cannot contain '/'.\n");
         return EXIT_FAILURE;
     }
     if (strchr(app_name, '.')) {
-        perror("Project name cannot contain '.'\n");
+        perror("Project name cannot contain '.'.\n");
         return EXIT_FAILURE;
     }
 
@@ -144,7 +144,7 @@ int main(int argc, char** argv) {
             fprintf(stderr, "ERROR: Failed to create file: %s\n", file_name);
             return EXIT_FAILURE;
         } else {
-            const char* file_fmt = "# Flexible C Project Makefile (FCPM)\n"
+            const char* file_fmt = "# Flexible C Project Makefile\n"
                                    "EXE_NAME = %s\n"
                                    "COMPILER = clang\n"
                                    "DEBUGGER = lldb\n"
@@ -154,7 +154,7 @@ int main(int argc, char** argv) {
                                    "# Commands:\n"
                                    "\n"
                                    "# make          => builds the executable\n"
-                                   "# make run      => runs the executable (must be built first)\n"
+                                   "# make run      => runs the executable\n"
                                    "# make debug    => runs the debbuger with the executable\n"
                                    "# make clean    => removes build artifacts\n"
                                    "# make commands => builds compile_commands.json for 'clang' and 'clangd'\n"
@@ -177,10 +177,10 @@ int main(int argc, char** argv) {
                                    "\t@mkdir -p build\n"
                                    "\t$(COMPILER) -c $< -o $@ $(CFLAGS)\n"
                                    "\n"
-                                   "run:\n"
+                                   "run: $(TARGET)\n"
                                    "\t./bin/$(EXE_NAME)\n"
                                    "\n"
-                                   "debug:\n"
+                                   "debug: $(TARGET)\n"
                                    "\t$(DEBUGGER) ./bin/$(EXE_NAME)\n"
                                    "\n"
                                    "clean:\n"
