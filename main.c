@@ -74,6 +74,7 @@ int main(int argc, char** argv) {
     make_subdir(app_name, "bin");
     make_subdir(app_name, "build");
     make_subdir(app_name, "include");
+    make_subdir(app_name, "lib");
     make_subdir(app_name, "src");
 
     char year[5];
@@ -162,7 +163,7 @@ int main(int argc, char** argv) {
                                    "\n"
                                    "TARGET = bin/$(EXE_NAME)\n"
                                    "CFLAGS = -Iinclude $(FLAGS) $(shell pkg-config --cflags $(PACKAGES))\n"
-                                   "LDFLAGS = $(FLAGS) $(shell pkg-config --libs $(PACKAGES))\n"
+                                   "LDFLAGS = $(FLAGS) $(shell pkg-config --libs $(PACKAGES)) -Llib $(patsubst lib/lib%%.a,-l%%,$(wildcard lib/lib*.a))\n"
                                    "SRC_FILES = $(wildcard src/*.c)\n"
                                    "OBJ_FILES = $(patsubst src/%%.c,build/%%.o,$(SRC_FILES))\n"
                                    "\n"

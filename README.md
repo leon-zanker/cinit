@@ -1,6 +1,6 @@
 # cinit
 
-`cinit` is a simple initialization tool for small multi-file C projects. It is currently only tested on Linux, though it should support macOS as well.
+`cinit` is a simple initialization tool for small multi-file C executable projects. It is currently only tested on Linux, though it should support macOS as well.
 
 This application is meant to work well with `clang`, `clangd` and `lldb`, as it has functionality specifically for `clangd` and the default `Makefile` uses `clang` as the compiler and `lldb` as the debugger, though you can easily switch out the `COMPILER` variable, with that being the only change necessary to use another compiler of your choice and the `DEBUGGER` variable, with that being the only change necessary to use another debugger of your choice.
 
@@ -18,6 +18,7 @@ $ tree
 ├── build
 ├── include
 │   └── project.h
+├── lib
 ├── LICENSE.txt
 ├── Makefile
 ├── README.md
@@ -25,7 +26,7 @@ $ tree
     └── main.c
 ```
 
-The `Makefile` supports that the `src` directory can contain multiple C source files, as long as they are not located inside subfolders. The same is true for the `include` folder and header files, respectively. You can also specify multiple, space-separated packages/dependencies/libraries that should be looked up using `pkg-config` during the compilation process. If you need intellisense from `clangd` for these packages/dependencies/libraries you can run the `make commands` command to generate a `compile_commands.json` file for it.
+The `Makefile` supports that the `src` directory can contain multiple C source files, as long as they are not located inside subfolders. The same is true for the `include` folder and header files, respectively. You can also specify multiple, space-separated packages/dependencies/libraries that should be looked up using `pkg-config` during the compilation process. If you need intellisense from `clangd` for these packages/dependencies/libraries you can run the `make commands` command to generate a `compile_commands.json` file for it using `bear`. You can also use static libraries locally in your project by placing them in the `lib` directory and their respective header files in the `include` directory (please note that the libraries must follow the default C library naming convention, that is "lib{library name}.a", where {library name} is replaced with the name of the library).
 
 The possible `Makefile` commands are:
 
